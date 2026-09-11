@@ -1,5 +1,5 @@
 // Dữ liệu mẫu (sẽ bị ghi đè khi dán text mới)
-let studentList = [{ ho_va_ten: "Nguyễn Văn A", lop_hoc: "A1K29", ten_dang_nhap: "vana_a1k29", mat_khau: "123" }];
+let studentList = [{ ho_va_ten: "An Khánh", lop_hoc: "A1K29", ten_dang_nhap: "ankhanh_a1k29", mat_khau: "123" }];
 
 let questionList = JSON.parse(localStorage.getItem('htk_questions')) || [
     { cau_hoi_so: 1, noi_dung: "Ở tế bào nhân thực, bào quan nào chứa ADN?", chuyen_de: "Sinh học tế bào", dang_cau_hoi: 1, dap_an_a: "Riboxom", dap_an_b: "Ti thể", dap_an_c: "Lưới nội chất", dap_an_d: "Bộ máy Golgi", dap_an_dung: "B", giai_thich: "Ti thể và lục lạp là 2 bào quan có chứa ADN riêng." },
@@ -216,4 +216,3 @@ function sendAIMessage() {
         box.scrollTop = box.scrollHeight;
     }, 500);
 }
-
