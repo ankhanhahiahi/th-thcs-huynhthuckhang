@@ -3,98 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TH&THCS HUỲNH THÚC KHÁNG</title>
+    <title>TRƯỜNG TH&THCS HUỲNH THÚC KHÁNG</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Thư viện SheetJS đọc/xuất file Excel -->
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
-
-    <!-- Header Navigation -->
+    <!-- Header -->
     <header>
-        <div class="header-title" onclick="goHome()">TH&THCS HUỲNH THÚC KHÁNG</div>
-        
-        <!-- Nút chưa đăng nhập -->
+        <div class="header-title" onclick="goHome()">TRƯỜNG TH&THCS HUỲNH THÚC KHÁNG</div>
         <div class="auth-buttons" id="auth-buttons">
-            <button class="btn-login-nav" onclick="openModal('login-modal')">Đăng nhập</button>
-            <button class="btn-register-nav" onclick="openModal('register-modal')">+ Đăng ký (Giáo viên)</button>
+            <button class="btn-login-nav" onclick="openModal('login-modal')">Học sinh Đăng nhập</button>
+            <button class="btn-register-nav" onclick="openModal('teacher-login-modal')">Giáo viên</button>
         </div>
-
-        <!-- Cụm hiển thị khi ĐÃ ĐĂNG NHẬP (Lưu đăng nhập F5) -->
         <div class="user-session" id="user-session" style="display: none;">
             <span id="user-display-name"></span>
-            <button class="btn-logout" onclick="logout()">Đăng xuất</button>
+            <button class="btn-logout" onclick="logout()">Thoát</button>
         </div>
     </header>
 
-    <!-- Main Container -->
     <main class="main-container">
-
-        <!-- 1. GIAO DIỆN TRANG CHỦ (Giống hệt ảnh mẫu) -->
+        <!-- TRANG CHỦ -->
         <section id="landing-view" class="view-section active">
             <div class="hero">
-                <h2>Hệ Thống Học Tập Trực Tuyến & Hỏi Đáp AI</h2>
-                <p>Nền tảng quản lý bài tập, tự động chấm điểm và hỗ trợ giải đáp thắc mắc thông minh<br>dành riêng cho giáo viên và học sinh nhà trường.</p>
+                <h2>Hệ Thống Tự Động Hóa Học Tập & Kiểm Tra</h2>
+                <p>Nhận diện đề thi siêu tốc - Thống kê điểm yếu cá nhân - Hỗ trợ giải đáp AI</p>
             </div>
-
             <div class="roles-container">
-                <!-- Thẻ Học Sinh -->
-                <div class="role-card">
+                <div class="role-card" onclick="openModal('login-modal')">
                     <h3>Khu vực Học sinh</h3>
-                    <p class="card-desc">Không cần đăng ký. Truy cập trực tiếp thông qua Mã lớp do giáo viên cung cấp.</p>
-                    <ul class="feature-list">
-                        <li>Làm bài trắc nghiệm & nộp bài tự luận</li>
-                        <li>Xem điểm và lịch sử học tập</li>
-                        <li><strong>Chat với AI</strong> để được giảng lại bài không hiểu</li>
-                    </ul>
-                    <button class="btn-card btn-navy" onclick="openModal('login-modal')">Vào Lớp Học</button>
+                    <p class="card-desc">Làm bài tập được giao, xem giải thích chi tiết và tương tác AI.</p>
+                    <button class="btn-card btn-navy">Vào Lớp Học</button>
                 </div>
-
-                <!-- Thẻ Giáo Viên -->
-                <div class="role-card">
+                <div class="role-card" onclick="openModal('teacher-login-modal')">
                     <h3>Khu vực Giáo viên</h3>
-                    <p class="card-desc">Dành riêng cho giáo viên bộ môn và chủ nhiệm. Yêu cầu tạo tài khoản.</p>
-                    <ul class="feature-list">
-                        <li>Tạo lớp học & Quản lý danh sách học sinh</li>
-                        <li><strong>Upload đề thi</strong> từ file Excel/CSV mẫu</li>
-                        <li>Xuất file thống kê điểm số tự động</li>
-                    </ul>
-                    <div class="card-btn-group">
-                        <button class="btn-card btn-outline" onclick="openModal('register-modal')">Đăng ký tài khoản mới</button>
-                        <button class="btn-card btn-navy" onclick="openModal('teacher-login-modal')">Đăng nhập Giáo viên</button>
-                    </div>
+                    <p class="card-desc">Tạo đề thi tự động bằng cách copy-paste. Theo dõi phổ điểm.</p>
+                    <button class="btn-card btn-outline">Truy cập Dashboard</button>
                 </div>
             </div>
         </section>
 
-        <!-- 2. GIAO DIỆN LÀM BÀI DÀNH CHO HỌC SINH -->
+        <!-- KHU VỰC HỌC SINH -->
         <section id="student-quiz-view" class="view-section">
             <div class="quiz-layout">
                 <div class="quiz-main-content">
                     <div class="card-panel">
                         <div class="panel-header">
-                            <h2>Bài Kiểm Tra Trực Tuyến</h2>
+                            <h2>Bài Tập Đang Mở</h2>
                             <span id="student-badge" class="badge-info"></span>
                         </div>
-                        <div id="quiz-container">
-                            <!-- Câu hỏi sẽ render động từ script.js -->
-                        </div>
-                        <button class="btn-primary-large" onclick="submitQuiz()">NỘP BÀI THI</button>
+                        <div id="quiz-container"></div>
+                        <button class="btn-primary-large" onclick="submitQuiz()">NỘP BÀI</button>
                     </div>
                 </div>
-
-                <!-- Khung Chat AI NotebookLM -->
                 <div class="ai-chat-sidebar">
                     <div class="card-panel">
-                        <h2>Hỏi Đáp AI (NotebookLM)</h2>
-                        <p class="chat-sub">Trợ lý AI hỗ trợ giải thích kiến thức nếu em chưa hiểu bài.</p>
+                        <h2>Trợ lý AI</h2>
                         <div class="chat-box">
                             <div class="chat-messages" id="chat-messages">
-                                <div class="msg msg-ai">Xin chào! Em có câu hỏi nào về bài học hôm nay không?</div>
+                                <div class="msg msg-ai">Chào em, hãy hoàn thành bài tập. Nếu có chuyên đề nào chưa rõ, nhắn vào đây nhé!</div>
                             </div>
                             <div class="chat-input-area">
-                                <input type="text" id="chat-input" placeholder="Nhập thắc mắc..." onkeypress="if(event.key==='Enter') sendAIMessage()">
+                                <input type="text" id="chat-input" placeholder="Nhập câu hỏi..." onkeypress="if(event.key==='Enter') sendAIMessage()">
                                 <button onclick="sendAIMessage()">Gửi</button>
                             </div>
                         </div>
@@ -103,106 +72,64 @@
             </div>
         </section>
 
-        <!-- 3. GIAO DIỆN QUẢN LÝ DÀNH CHO GIÁO VIÊN -->
+        <!-- KHU VỰC GIÁO VIÊN -->
         <section id="teacher-dashboard-view" class="view-section">
             <div class="card-panel">
-                <h2>1. Quản Lý Danh Sách Học Sinh</h2>
-                <div class="upload-zone">
-                    <p>Tải lên file danh sách theo mẫu <b>file_mau_danh_sach_hoc_sinh.xlsx</b></p>
-                    <label class="btn-upload">
-                        Chọn file danh sách (.xlsx, .csv)
-                        <input type="file" accept=".xlsx, .csv" onchange="handleStudentUpload(event)">
-                    </label>
-                </div>
-                <div id="student-table-container"></div>
+                <h2>TẠO ĐỀ THI NHANH (SMART PARSER)</h2>
+                <p>Dán nội dung từ Word vào khung bên dưới. Hệ thống sẽ tự động bóc tách thành đề thi online.</p>
+                <textarea id="raw-question-input" spellcheck="false" placeholder="Ví dụ:
+Câu 1: Ở tế bào nhân thực, bào quan nào chứa ADN? (Sinh học tế bào)
+A. Riboxom
+B. Ti thể (*)
+C. Lưới nội chất
+D. Bộ máy Golgi
+Giải thích: Ti thể và lục lạp là 2 bào quan có chứa ADN riêng.
+
+Câu 2: Có bao nhiêu cách chọn 2 học sinh từ một tập thể gồm 37 học sinh? (Tổ hợp xác suất)
+Đáp án: 666
+Giải thích: Dùng tổ hợp chập 2 của 37: C(2,37) = 666."></textarea>
+                <button class="btn-primary" onclick="processTextToQuestions()" style="width: 200px;">+ TẠO ĐỀ THI</button>
             </div>
 
             <div class="card-panel">
-                <h2>2. Ngân Hàng Câu Hỏi & Đề Thi</h2>
-                <div class="upload-zone">
-                    <p>Tải lên file đề thi theo mẫu <b>file_mau_cau_hoi.xlsx</b> (Gồm 3 dạng: TN 4 đáp án, Đúng/Sai, Trả lời ngắn max 4 ký tự)</p>
-                    <label class="btn-upload">
-                        Chọn file câu hỏi (.xlsx, .csv)
-                        <input type="file" accept=".xlsx, .csv" onchange="handleQuestionUpload(event)">
-                    </label>
-                </div>
+                <h2>XEM TRƯỚC NGÂN HÀNG CÂU HỎI</h2>
                 <div id="question-table-container"></div>
             </div>
 
             <div class="card-panel">
-                <h2>3. Thống Kê & Xuất Báo Cáo Kết Quả</h2>
-                <p>Xuất kết quả bài làm học sinh ra file Excel theo mẫu <b>ket_qua_bai_lam.xlsx</b></p>
-                <button class="btn-primary" onclick="exportResults()">TẢI FILE KẾT QUẢ BÀI LÀM (.XLSX)</button>
-                <div id="results-table-container" style="margin-top: 15px;"></div>
+                <h2>KẾT QUẢ & PHÂN TÍCH LỖ HỔNG</h2>
+                <div id="results-table-container"></div>
             </div>
         </section>
-
     </main>
 
-    <!-- MODAL ĐĂNG NHẬP HỌC SINH -->
+    <!-- Modals -->
     <div id="login-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
             <h3>Đăng Nhập Học Sinh</h3>
-            <p class="modal-sub">Mật khẩu mặc định: <b>Abc@123</b></p>
             <div class="form-group">
                 <label>Tên đăng nhập:</label>
-                <input type="text" id="hs-username" placeholder="Ví dụ: nguyenvana_10a1">
+                <input type="text" id="hs-username" value="ankhanh_a1k29">
             </div>
             <div class="form-group">
                 <label>Mật khẩu:</label>
-                <input type="password" id="hs-password" value="Abc@123">
+                <input type="password" id="hs-password" value="123">
             </div>
             <button class="btn-primary" style="width: 100%;" onclick="studentLogin()">VÀO LÀM BÀI</button>
         </div>
     </div>
 
-    <!-- MODAL ĐĂNG NHẬP GIÁO VIÊN -->
     <div id="teacher-login-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('teacher-login-modal')">&times;</span>
-            <h3>Đăng Nhập Giáo Viên</h3>
+            <h3>Quản Trị / Giáo Viên</h3>
             <div class="form-group">
-                <label>Tên đăng nhập / Email:</label>
-                <input type="text" id="gv-username" placeholder="Thầy/Cô nhập email...">
-            </div>
-            <div class="form-group">
-                <label>Mật khẩu:</label>
-                <input type="password" id="gv-password">
+                <label>Mã giáo viên:</label>
+                <input type="text" id="gv-username" placeholder="Nhập mã...">
             </div>
             <button class="btn-primary" style="width: 100%;" onclick="teacherLogin()">ĐĂNG NHẬP</button>
         </div>
     </div>
-
-    <!-- MODAL ĐĂNG KÝ GIÁO VIÊN -->
-    <div id="register-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('register-modal')">&times;</span>
-            <h3>Đăng Ký Tài Khoản Giáo Viên</h3>
-            <div class="form-group">
-                <label>Họ và tên Giáo viên:</label>
-                <input type="text" id="reg-gv-name" placeholder="Ví dụ: Nguyễn Văn Minh">
-            </div>
-            <div class="form-group">
-                <label>Môn giảng dạy:</label>
-                <input type="text" placeholder="Ví dụ: Toán, Ngữ Văn...">
-            </div>
-            <div class="form-group">
-                <label>Email nhà trường:</label>
-                <input type="email" id="reg-gv-email" placeholder="example@huynhthuckhang.edu.vn">
-            </div>
-            <div class="form-group">
-                <label>Mật khẩu:</label>
-                <input type="password" id="reg-gv-pass">
-            </div>
-            <button class="btn-primary" style="width: 100%;" onclick="registerTeacher()">TẠO TÀI KHOẢN</button>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        &copy; Hệ thống Quản lý Học tập - Trường TH&THCS Huỳnh Thúc Kháng.
-    </footer>
-
 </body>
 </html>
