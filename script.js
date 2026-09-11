@@ -216,3 +216,4 @@ function sendAIMessage() {
         box.scrollTop = box.scrollHeight;
     }, 500);
 }
+
