@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRƯỜNG TH&THCS HUỲNH THÚC KHÁNG - Interactive Quiz</title>
+    <title>HuynhThucKhang-Quiz</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -23,22 +23,17 @@
             background-color: #f4f6f9;
             color: #0f172a;
         }
-        .bg-navy { background-color: #0a192f; }
-        .bg-navy-light { background-color: #1e293b; }
-        .text-navy { color: #0a192f; }
-        .border-navy { border-color: #0a192f; }
         .card-shadow { box-shadow: 0 10px 25px -5px rgba(10, 25, 47, 0.08); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
 
     <!-- HEADER / BRANDING -->
-    <header class="bg-[#0a192f] text-white shadow-lg border-b-4 border-blue-600 p-4 sticky top-0 z-50">
+    <header class="bg-[#0a192f] text-white shadow-lg border-b-4 border-blue-600 p-3.5 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-white text-[#0a192f] rounded-lg flex items-center justify-center font-black text-xl shadow">
-                    HTK
-                </div>
+                <!-- LOGO TRƯỜNG HUỲNH THÚC KHÁNG -->
+                <img src="logo.jpg" alt="Logo Trường TH&THCS Huỳnh Thúc Kháng" class="w-11 h-11 object-contain bg-white rounded-full p-0.5 border border-amber-300 shadow">
                 <h1 class="font-extrabold text-xl md:text-2xl tracking-wide text-white">TRƯỜNG TH&THCS HUỲNH THÚC KHÁNG</h1>
             </div>
             <div id="userInfo" class="text-sm font-semibold text-blue-200"></div>
@@ -52,9 +47,9 @@
         <div id="roleScreen" class="w-full text-center space-y-8 py-8">
             <div class="space-y-3">
                 <span class="bg-blue-100 text-[#0a192f] border border-blue-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                    Hệ thống tương tác lớp học
+                    Hệ thống tương tác lớp học 4.0
                 </span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-[#0a192f]">Chào mừng đến với HTK Quiz</h2>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-[#0a192f]">Chào mừng đến với HuynhThucKhang-Quiz</h2>
                 <p class="text-slate-600 max-w-lg mx-auto text-sm">Vui lòng chọn vai trò để bắt đầu tiết học tương tác</p>
             </div>
 
@@ -65,7 +60,7 @@
                         <i class="fa-solid fa-chalkboard-user"></i>
                     </div>
                     <h3 class="text-xl font-bold text-[#0a192f] mb-1">Dành cho Giáo Viên</h3>
-                    <p class="text-xs text-slate-500">Soạn câu hỏi (Trắc nghiệm, Đúng/Sai, Điền số), mở phòng và theo dõi kết quả.</p>
+                    <p class="text-xs text-slate-500">Soạn câu hỏi (Trắc nghiệm ABCD, Đúng/Sai, Điền số), mở phòng và theo dõi kết quả.</p>
                 </button>
 
                 <!-- Nút Học Sinh -->
@@ -90,7 +85,7 @@
                 <div class="space-y-5">
                     <div>
                         <label class="block text-sm font-bold mb-1.5 text-slate-700">Tên môn học / Chủ đề bài giảng:</label>
-                        <input id="quizTitle" type="text" placeholder="Ví dụ: Ôn tập Đại số 8 - Chương 2" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0a192f]">
+                        <input id="quizTitle" type="text" placeholder="Ví dụ: Ôn tập Đại số 8 - Tiết 12" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0a192f]">
                     </div>
 
                     <!-- Danh sách câu hỏi đang thêm -->
@@ -152,9 +147,7 @@
 
                 <h2 id="hostQuestionText" class="text-2xl font-extrabold text-[#0a192f] py-2">---</h2>
 
-                <div id="hostOptionsGrid" class="text-left">
-                    <!-- Nội dung đáp án được render động theo loại câu hỏi -->
-                </div>
+                <div id="hostOptionsGrid" class="text-left"></div>
 
                 <button onclick="nextQuestionByTeacher()" class="w-full bg-[#0a192f] hover:bg-blue-900 text-white font-bold py-3.5 rounded-xl transition mt-4">
                     Câu hỏi tiếp theo <i class="fa-solid fa-arrow-right ml-2"></i>
@@ -174,7 +167,7 @@
                 <div class="w-16 h-16 bg-blue-50 text-[#0a192f] border border-blue-200 rounded-2xl flex items-center justify-center mx-auto text-2xl">
                     <i class="fa-solid fa-user-check"></i>
                 </div>
-                <h2 class="text-2xl font-bold text-[#0a192f]">Tham gia Trả lời</h2>
+                <h2 class="text-2xl font-bold text-[#0a192f]">HuynhThucKhang-Quiz</h2>
 
                 <div class="space-y-4 text-left">
                     <div>
@@ -187,7 +180,7 @@
                     </div>
                 </div>
 
-                <button onclick="joinGameAsStudent()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition">
+                <button id="btnJoinStudent" onclick="joinGameAsStudent()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition">
                     Vào Phòng Đấu
                 </button>
             </div>
@@ -213,7 +206,6 @@
                     <span class="text-blue-700">Điểm hiện tại: <span id="studentScore" class="text-lg text-[#0a192f]">0</span></span>
                 </div>
 
-                <!-- Khu vực chứa giao diện trả lời linh hoạt -->
                 <div id="studentAnswerContainer" class="pt-2"></div>
                 
                 <p id="studentFeedback" class="text-sm font-bold min-h-[24px]"></p>
@@ -224,14 +216,14 @@
 
     <!-- FOOTER -->
     <footer class="bg-white text-center py-4 text-xs font-semibold text-slate-500 border-t border-slate-200">
-        © TRƯỜNG TH&THCS HUỲNH THÚC KHÁNG
+        © TRƯỜNG TH&THCS HUỲNH THÚC KHÁNG - HuynhThucKhang-Quiz
     </footer>
 
     <!-- JS LOGIC -->
     <script>
-        // Cấu hình Firebase
+        // Cấu hình Firebase Database chính thức của trường
         const firebaseConfig = {
-            databaseURL: "https://huynhthuckhang-quiz-default-rtdb.firebaseio.com"
+            databaseURL: "https://th-thcshuynhthuckhang-default-rtdb.firebaseio.com/"
         };
 
         if (!firebase.apps.length) {
@@ -245,7 +237,6 @@
         let activeQuestionIndex = 0;
         let myScore = 0;
 
-        // Tự động quét tham số PIN từ URL khi mở qua QR code
         window.onload = () => {
             const urlParams = new URLSearchParams(window.location.search);
             const pinFromUrl = urlParams.get('pin');
@@ -282,7 +273,6 @@
 
                     <input type="text" placeholder="Nhập nội dung câu hỏi..." class="q-text w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm text-slate-900 focus:outline-none focus:border-[#0a192f]">
 
-                    <!-- Khung nhập đáp án tùy thuộc vào loại câu hỏi -->
                     <div id="qAnswerArea_${qCount}" class="space-y-2"></div>
                 </div>
             `;
@@ -333,7 +323,7 @@
         }
 
         function createGameRoom() {
-            const title = document.getElementById('quizTitle').value.trim() || "Tiết học Trắc nghiệm HTK";
+            const title = document.getElementById('quizTitle').value.trim() || "Tiết học Trắc nghiệm Huỳnh Thúc Kháng";
             const qBlocks = document.querySelectorAll('[id^="qBlock_"]');
             currentQuestions = [];
 
@@ -376,7 +366,6 @@
                 return;
             }
 
-            // Tạo mã PIN ngẫu nhiên 6 chữ số
             currentGamePin = Math.floor(100000 + Math.random() * 900000).toString();
 
             db.ref('rooms/' + currentGamePin).set({
@@ -389,7 +378,6 @@
             document.getElementById('displayQuizTitle').innerText = title;
             document.getElementById('displayGamePin').innerText = currentGamePin;
 
-            // ĐẢM BẢO MÃ QR HOẠT ĐỘNG THẬT TRÊN GITHUB PAGES / HOSTING
             const currentUrlNoQuery = window.location.origin + window.location.pathname;
             const joinUrl = currentUrlNoQuery + '?pin=' + currentGamePin;
 
@@ -403,7 +391,6 @@
                 correctLevel : QRCode.CorrectLevel.H
             });
 
-            // Lắng nghe học sinh vào phòng
             db.ref('rooms/' + currentGamePin + '/players').on('value', snapshot => {
                 const players = snapshot.val() || {};
                 const listEl = document.getElementById('playersList');
@@ -459,7 +446,7 @@
                     <div class="border-2 border-rose-500 bg-rose-50 p-4 rounded-xl font-bold text-rose-800 text-center">SAI</div>
                 `;
             } else if (q.type === 'num') {
-                badge.innerText = "Điền số / Câu trả lời ngắn";
+                badge.innerText = "Điền số / Trả lời ngắn";
                 grid.className = "block";
                 grid.innerHTML = `
                     <div class="border-2 border-blue-500 bg-blue-50 p-4 rounded-xl font-bold text-blue-900 text-center">
@@ -468,7 +455,6 @@
                 `;
             }
 
-            // Lắng nghe điểm số BXH
             db.ref('rooms/' + currentGamePin + '/players').on('value', snapshot => {
                 const players = snapshot.val() || {};
                 const sorted = Object.values(players).sort((a,b) => (b.score || 0) - (a.score || 0));
@@ -493,7 +479,7 @@
                 });
                 renderHostQuestion(activeQuestionIndex);
             } else {
-                alert("Đã hoàn thành toàn bộ câu hỏi!");
+                alert("Đã hoàn thành toàn bộ bài trắc nghiệm!");
                 confetti();
             }
         }
@@ -502,45 +488,56 @@
         function joinGameAsStudent() {
             const pin = document.getElementById('inputPin').value.trim();
             const name = document.getElementById('inputStudentName').value.trim();
+            const btn = document.getElementById('btnJoinStudent');
 
             if (!pin || !name) {
                 alert("Vui lòng nhập đầy đủ Mã PIN và Họ Tên!");
                 return;
             }
 
+            btn.innerText = "Đang kết nối...";
+            btn.disabled = true;
+
             currentGamePin = pin;
             myStudentName = name;
 
-            db.ref('rooms/' + pin).once('value', snapshot => {
+            db.ref('rooms/' + pin).once('value')
+            .then(snapshot => {
                 if (snapshot.exists()) {
                     const studentRef = db.ref('rooms/' + pin + '/players').push();
-                    studentRef.set({
+                    return studentRef.set({
                         name: name,
                         score: 0
-                    });
+                    }).then(() => {
+                        document.getElementById('studentNameBadge').innerText = name;
+                        showScreen('studentLobbyScreen');
 
-                    document.getElementById('studentNameBadge').innerText = name;
-                    showScreen('studentLobbyScreen');
+                        db.ref('rooms/' + pin + '/status').on('value', statusSnap => {
+                            if (statusSnap.val() === 'playing') {
+                                showScreen('studentGameScreen');
+                            }
+                        });
 
-                    db.ref('rooms/' + pin + '/status').on('value', statusSnap => {
-                        if (statusSnap.val() === 'playing') {
-                            showScreen('studentGameScreen');
-                        }
-                    });
-
-                    db.ref('rooms/' + pin + '/currentQ').on('value', qSnap => {
-                        const qIndex = qSnap.val();
-                        document.getElementById('studentQNum').innerText = "Câu " + (qIndex + 1);
-                        document.getElementById('studentFeedback').innerText = "";
-                        
-                        db.ref('rooms/' + pin + '/questions/' + qIndex).once('value', qDataSnap => {
-                            renderStudentQuestion(qDataSnap.val());
+                        db.ref('rooms/' + pin + '/currentQ').on('value', qSnap => {
+                            const qIndex = qSnap.val();
+                            document.getElementById('studentQNum').innerText = "Câu " + (qIndex + 1);
+                            document.getElementById('studentFeedback').innerText = "";
+                            
+                            db.ref('rooms/' + pin + '/questions/' + qIndex).once('value', qDataSnap => {
+                                renderStudentQuestion(qDataSnap.val());
+                            });
                         });
                     });
-
                 } else {
-                    alert("Mã PIN không đúng hoặc phòng đã kết thúc!");
+                    alert("Mã PIN phòng không hợp lệ hoặc Giáo viên chưa tạo phòng!");
+                    btn.innerText = "Vào Phòng Đấu";
+                    btn.disabled = false;
                 }
+            })
+            .catch(err => {
+                alert("Lỗi kết nối: " + err.message + "\nHãy kiểm tra lại Rules trong Firebase Database!");
+                btn.innerText = "Vào Phòng Đấu";
+                btn.disabled = false;
             });
         }
 
@@ -608,7 +605,6 @@
 
                 document.getElementById('studentScore').innerText = myScore;
 
-                // Cập nhật điểm lên hệ thống
                 db.ref('rooms/' + currentGamePin + '/players').once('value', pSnap => {
                     pSnap.forEach(child => {
                         if (child.val().name === myStudentName) {
